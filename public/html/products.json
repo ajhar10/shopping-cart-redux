@@ -1,0 +1,21 @@
+{
+    id: 1,
+    name: "Dell E1916HV 18.5 Inch (35)",
+    price: 9300,
+    qty: 20
+
+},
+{
+    id: 2,
+    name: "Canon Eos 4000D 18MP (72)",
+    price: 36500,
+    qty: 20
+
+},
+{
+    id: 3,
+    name: "Asus Vivobook X515MA (20)",
+    price: 35500,
+    qty: 20
+
+}
