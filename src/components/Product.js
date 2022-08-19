@@ -1,15 +1,18 @@
 import React from 'react'
-import { connect } from 'react-redux'
+import { connect, useSelector } from 'react-redux'
 import { addToCart } from '../redux/actions'
 
 const Product = ({productData, addToCart}) => {
+    const items = useSelector((state)=>state.cart)
+    const item = items?.find(item=>item?.id===productData.id)
+    
   return (
     <div
                         class="bg-white py-4 px-4 shadow-md rounded-lg my-4 mx-4"
                     >
                         <div class="flex justify-between px-4 items-center">
                             <div class="text-lg font-semibold">
-                                <p>{productData.name}</p>
+                                <p>{productData.name} ({item? productData.qty-item.qty : productData.qty})</p>
                                 <p class="text-gray-400 text-base">Tk {productData.price}</p>
                             </div>
                             <div class="text-lg font-semibold">

@@ -1,0 +1,5 @@
+.disable:disabled{
+    background:  #fff;
+    color: #ccc;
+    cursor: no-drop;
+ }

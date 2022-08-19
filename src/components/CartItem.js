@@ -1,8 +1,14 @@
 import React from 'react'
-import { connect } from 'react-redux';
+import { connect, useSelector } from 'react-redux';
 import { decrement, increment } from '../redux/actions';
+import  './CartItem.css'
 
-const CartItem = ({itemData, increment, decrement, products}) => {
+const CartItem = ({itemData, increment, decrement}) => {
+    
+    const products = useSelector((state)=>state.products)
+    const product = products.find(prod=>prod.id===itemData.id)
+
+    // console.log(product);
   return (
     <div class="bg-white  px-4 shadow-md rounded-lg mx-4">
         <div class="flex justify-between border-b-2 ">
@@ -34,8 +40,9 @@ const CartItem = ({itemData, increment, decrement, products}) => {
                                     <p>{itemData.qty}</p>
                                     
                                     <button
+                                    disabled={itemData.qty>=product.qty ? true : false}
                                     onClick={()=>increment(itemData.id)}
-                                        class="focus:outline-none bg-purple-700 hover:bg-purple-800 text-white font-bold py-1 px-1 rounded-full inline-flex items-center"
+                                        class="disable focus:outline-none bg-purple-700 hover:bg-purple-800 text-white font-bold py-1 px-1 rounded-full inline-flex items-center"
                                     >
                                         <svg
                                             xmlns="http://www.w3.org/2000/svg"

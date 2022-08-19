@@ -4,21 +4,21 @@ const initialState = {
     products: [
         {
             id: 1,
-            name: "Dell E1916HV 18.5 Inch (35)",
+            name: "Dell E1916HV 18.5 Inch",
             price: 9300,
             qty: 35
         
         },
         {
             id: 2,
-            name: "Canon Eos 4000D 18MP (72)",
+            name: "Canon Eos 4000D 18MP",
             price: 36500,
             qty: 72
         
         },
         {
             id: 3,
-            name: "Asus Vivobook X515MA (20)",
+            name: "Asus Vivobook X515MA",
             price: 35500,
             qty: 20
         
