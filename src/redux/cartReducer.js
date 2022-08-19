@@ -43,10 +43,24 @@ const cartReducer = (state = initialState, action) =>{
                             {...item, qty: item.qty + 1}:item) 
                     :   [...state.cart,{...item, qty: 1}]
             };
-        // case INCREMENT:
-        //     return {};
-        // case DECREMENT:
-        //     return {};
+        case INCREMENT:
+            return {
+                ...state,
+                cart: state.cart.map((item) =>
+                  item.id === action.payload.id
+                    ? { ...item, qty:item.qty + 1 }
+                    : item
+                ),
+              };
+        case DECREMENT:
+            return {
+                ...state,
+                cart: state.cart.map((item) =>
+                  item.id === action.payload.id
+                    ? { ...item, qty:item.qty -1 }
+                    : item
+                ),
+              };
         default:
             return state;
     }

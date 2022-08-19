@@ -1,9 +1,11 @@
 import React from 'react'
+import { connect } from 'react-redux';
+import { decrement, increment } from '../redux/actions';
 
-const CartItem = ({itemData}) => {
+const CartItem = ({itemData, increment, decrement, products}) => {
   return (
     <div class="bg-white  px-4 shadow-md rounded-lg mx-4">
-        <div class="flex justify-between border-b-2 mb-2">
+        <div class="flex justify-between border-b-2 ">
                             <div class="text-lg py-2">
                                 <p>{itemData.name}</p>
                             </div>
@@ -11,7 +13,7 @@ const CartItem = ({itemData}) => {
                                 <div
                                     class="flex flex-row space-x-2 w-full items-center rounded-lg"
                                 >
-                                    <button
+                                    <button onClick={()=>decrement(itemData.id)}
                                         class="focus:outline-none bg-purple-700 hover:bg-purple-800 text-white font-bold py-1 px-1 rounded-full inline-flex items-center"
                                     >
                                         <svg
@@ -30,7 +32,9 @@ const CartItem = ({itemData}) => {
                                         </svg>
                                     </button>
                                     <p>{itemData.qty}</p>
+                                    
                                     <button
+                                    onClick={()=>increment(itemData.id)}
                                         class="focus:outline-none bg-purple-700 hover:bg-purple-800 text-white font-bold py-1 px-1 rounded-full inline-flex items-center"
                                     >
                                         <svg
@@ -55,4 +59,11 @@ const CartItem = ({itemData}) => {
   )
 }
 
-export default CartItem
+const mapDispatchToProps = (dispatch) => {
+    return {
+      increment: (id) => dispatch(increment(id)),
+      decrement: (id) => dispatch(decrement(id)),
+    };
+  };
+  
+  export default connect(null, mapDispatchToProps)(CartItem);
